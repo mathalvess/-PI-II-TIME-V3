@@ -5,11 +5,10 @@
 ### Integrantes
 
 * Matheus Augusto Alves - 26011776
-* [Nome completo do integrante 2]
-* [Nome completo do integrante 3]
-* [Nome completo do integrante 4]
-* [Nome completo do integrante 5]
-
+* Luis Felipe Viotto Martins - 26006047
+* Lucas Marassi Cipriano Pererira - 260066147
+* Pedro Henrrique Basstto Ruiz - 26001779
+* Eduardo Campos Ferreira Filho - 26002602
 ### Curso
 
 Engenharia de Software
