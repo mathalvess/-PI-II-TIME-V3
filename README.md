@@ -23,8 +23,7 @@ Projeto Integrador II
 
 ### Professora Orientadora
 
-Luã Marcelo Muriana
-
+Fernando Silveira Luiz 
 ---
 
 ## Sobre o Projeto
