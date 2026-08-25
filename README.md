@@ -23,7 +23,7 @@ Projeto Integrador II
 
 ### Professora Orientadora
 
-Fernando Silveira Luiz 
+Fernando Silveira
 ---
 
 ## Sobre o Projeto
