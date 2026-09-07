@@ -1,0 +1,262 @@
+<!-- Autor: Lucas Marassi Cipriano Pereira
+     Tela de Listagem de Demandas - Sistema de Acompanhamento de Demandas
+     Projeto Integrador 2 -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demandas - SAD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <!-- Menu de navegacao -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="dashboard.html">SAD</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="demandas.html">Demandas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="demanda-form.html">Nova Demanda</a></li>
+                </ul>
+                <span class="navbar-text me-3">Lucas Marassi (Administrador)</span>
+                <a href="index.html" class="btn btn-outline-light btn-sm">Sair</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">Demandas</h4>
+            <a href="demanda-form.html" class="btn btn-primary">Nova Demanda</a>
+        </div>
+
+        <!-- Filtros e busca -->
+        <div class="card mb-3">
+            <div class="card-header">Filtros</div>
+            <div class="card-body">
+                <form action="demandas.html">
+                    <div class="row">
+
+                        <div class="col-md-12 mb-3">
+                            <label for="busca" class="form-label">Buscar por titulo ou descricao</label>
+                            <input type="text" class="form-control" id="busca" name="busca">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="status" class="form-label">Status</label>
+                            <select class="form-select" id="status" name="status">
+                                <option value="">Todos</option>
+                                <option value="aberta">Aberta</option>
+                                <option value="andamento">Em andamento</option>
+                                <option value="revisao">Em revisao</option>
+                                <option value="concluida">Concluida</option>
+                                <option value="cancelada">Cancelada</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="prioridade" class="form-label">Prioridade</label>
+                            <select class="form-select" id="prioridade" name="prioridade">
+                                <option value="">Todas</option>
+                                <option value="critica">Critica</option>
+                                <option value="alta">Alta</option>
+                                <option value="media">Media</option>
+                                <option value="baixa">Baixa</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="tipo" class="form-label">Tipo</label>
+                            <select class="form-select" id="tipo" name="tipo">
+                                <option value="">Todos</option>
+                                <option value="tarefa">Tarefa</option>
+                                <option value="defeito">Defeito</option>
+                                <option value="melhoria">Melhoria</option>
+                                <option value="documentacao">Documentacao</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="responsavel" class="form-label">Responsavel</label>
+                            <select class="form-select" id="responsavel" name="responsavel">
+                                <option value="">Todos</option>
+                                <option value="ana">Ana Ribeiro</option>
+                                <option value="carlos">Carlos Nunes</option>
+                                <option value="joao">Joao Almeida</option>
+                                <option value="maria">Maria Souza</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="ordenar" class="form-label">Ordenar por</label>
+                            <select class="form-select" id="ordenar" name="ordenar">
+                                <option value="prioridade">Prioridade</option>
+                                <option value="criacao">Data de criacao</option>
+                                <option value="prazo">Prazo</option>
+                                <option value="status">Status</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary">Filtrar</button>
+                            <a href="demandas.html" class="btn btn-secondary">Limpar</a>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tabela com as demandas -->
+        <div class="card">
+            <div class="card-header">148 demandas encontradas</div>
+            <div class="card-body table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Titulo</th>
+                            <th>Tipo</th>
+                            <th>Prioridade</th>
+                            <th>Status</th>
+                            <th>Projeto</th>
+                            <th>Responsavel</th>
+                            <th>Criacao</th>
+                            <th>Prazo</th>
+                            <th>Acoes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>1042</td>
+                            <td>Falha no login apos expiracao do token</td>
+                            <td>Defeito</td>
+                            <td><span class="badge bg-danger">Critica</span></td>
+                            <td><span class="badge bg-primary">Aberta</span></td>
+                            <td>Portal do Cliente</td>
+                            <td>Nao atribuido</td>
+                            <td>02/09/2026</td>
+                            <td>10/09/2026</td>
+                            <td><a href="demanda-detalhes.html" class="btn btn-sm btn-primary">Ver</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>1039</td>
+                            <td>Erro de calculo no relatorio financeiro</td>
+                            <td>Defeito</td>
+                            <td><span class="badge bg-danger">Critica</span></td>
+                            <td><span class="badge bg-primary">Aberta</span></td>
+                            <td>ERP Interno</td>
+                            <td>Maria Souza</td>
+                            <td>01/09/2026</td>
+                            <td>11/09/2026</td>
+                            <td><a href="demanda-detalhes.html" class="btn btn-sm btn-primary">Ver</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>1035</td>
+                            <td>Implementar filtro por responsavel</td>
+                            <td>Tarefa</td>
+                            <td><span class="badge bg-warning text-dark">Alta</span></td>
+                            <td><span class="badge bg-warning text-dark">Em andamento</span></td>
+                            <td>Portal do Cliente</td>
+                            <td>Joao Almeida</td>
+                            <td>28/08/2026</td>
+                            <td>19/09/2026</td>
+                            <td><a href="demanda-detalhes.html" class="btn btn-sm btn-primary">Ver</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>1028</td>
+                            <td>Exportar listagem de demandas em CSV</td>
+                            <td>Melhoria</td>
+                            <td><span class="badge bg-warning text-dark">Alta</span></td>
+                            <td><span class="badge bg-warning text-dark">Em andamento</span></td>
+                            <td>ERP Interno</td>
+                            <td>Ana Ribeiro</td>
+                            <td>25/08/2026</td>
+                            <td>12/09/2026</td>
+                            <td><a href="demanda-detalhes.html" class="btn btn-sm btn-primary">Ver</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>1019</td>
+                            <td>Atualizar manual de instalacao</td>
+                            <td>Documentacao</td>
+                            <td><span class="badge bg-primary">Media</span></td>
+                            <td><span class="badge bg-info text-dark">Em revisao</span></td>
+                            <td>Aplicativo Mobile</td>
+                            <td>Carlos Nunes</td>
+                            <td>20/08/2026</td>
+                            <td>13/09/2026</td>
+                            <td><a href="demanda-detalhes.html" class="btn btn-sm btn-primary">Ver</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>1014</td>
+                            <td>Padronizar mensagens de erro</td>
+                            <td>Melhoria</td>
+                            <td><span class="badge bg-primary">Media</span></td>
+                            <td><span class="badge bg-info text-dark">Em revisao</span></td>
+                            <td>Portal do Cliente</td>
+                            <td>Ana Ribeiro</td>
+                            <td>18/08/2026</td>
+                            <td>22/09/2026</td>
+                            <td><a href="demanda-detalhes.html" class="btn btn-sm btn-primary">Ver</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>1007</td>
+                            <td>Criar script de carga inicial do banco</td>
+                            <td>Tarefa</td>
+                            <td><span class="badge bg-secondary">Baixa</span></td>
+                            <td><span class="badge bg-success">Concluida</span></td>
+                            <td>ERP Interno</td>
+                            <td>Joao Almeida</td>
+                            <td>10/08/2026</td>
+                            <td>29/08/2026</td>
+                            <td><a href="demanda-detalhes.html" class="btn btn-sm btn-primary">Ver</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>0998</td>
+                            <td>Integrar notificacoes por e-mail</td>
+                            <td>Melhoria</td>
+                            <td><span class="badge bg-secondary">Baixa</span></td>
+                            <td><span class="badge bg-secondary">Cancelada</span></td>
+                            <td>Aplicativo Mobile</td>
+                            <td>Maria Souza</td>
+                            <td>05/08/2026</td>
+                            <td>-</td>
+                            <td><a href="demanda-detalhes.html" class="btn btn-sm btn-primary">Ver</a></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <!-- Paginacao -->
+                <ul class="pagination mb-0">
+                    <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Proxima</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

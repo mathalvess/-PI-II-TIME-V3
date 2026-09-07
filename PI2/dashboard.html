@@ -1,0 +1,261 @@
+<!-- Autor: Lucas Marassi Cipriano Pereira
+     Tela de Dashboard - Sistema de Acompanhamento de Demandas
+     Projeto Integrador 2 -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SAD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <!-- Menu de navegacao -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="dashboard.html">SAD</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="demandas.html">Demandas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="demanda-form.html">Nova Demanda</a></li>
+                </ul>
+                <span class="navbar-text me-3">Lucas Marassi (Administrador)</span>
+                <a href="index.html" class="btn btn-outline-light btn-sm">Sair</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <h4>Dashboard</h4>
+        <p class="text-muted">Resumo das demandas cadastradas</p>
+
+        <!-- Cards com os totais por status -->
+        <div class="row">
+
+            <div class="col-md-2 col-6 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <p class="numero">148</p>
+                        <p class="mb-0">Total</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-6 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <p class="numero">32</p>
+                        <p class="mb-0">Abertas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-6 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <p class="numero">41</p>
+                        <p class="mb-0">Em andamento</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-6 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <p class="numero">18</p>
+                        <p class="mb-0">Em revisao</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-6 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <p class="numero">49</p>
+                        <p class="mb-0">Concluidas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-6 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <p class="numero">8</p>
+                        <p class="mb-0">Canceladas</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Tabelas de prioridade e tipo -->
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-header">Demandas por prioridade</div>
+                    <div class="card-body">
+                        <table class="table table-striped mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Prioridade</th>
+                                    <th>Quantidade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="badge bg-danger">Critica</span></td>
+                                    <td>14</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-warning text-dark">Alta</span></td>
+                                    <td>37</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-primary">Media</span></td>
+                                    <td>64</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-secondary">Baixa</span></td>
+                                    <td>33</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-header">Demandas por tipo</div>
+                    <div class="card-body">
+                        <table class="table table-striped mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Quantidade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tarefa</td>
+                                    <td>58</td>
+                                </tr>
+                                <tr>
+                                    <td>Defeito</td>
+                                    <td>44</td>
+                                </tr>
+                                <tr>
+                                    <td>Melhoria</td>
+                                    <td>31</td>
+                                </tr>
+                                <tr>
+                                    <td>Documentacao</td>
+                                    <td>15</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Demandas criticas que ainda estao abertas -->
+        <div class="card mb-3">
+            <div class="card-header">Demandas criticas em aberto</div>
+            <div class="card-body table-responsive">
+                <table class="table table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Titulo</th>
+                            <th>Projeto</th>
+                            <th>Responsavel</th>
+                            <th>Prazo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1042</td>
+                            <td><a href="demanda-detalhes.html">Falha no login apos expiracao do token</a></td>
+                            <td>Portal do Cliente</td>
+                            <td>Nao atribuido</td>
+                            <td>10/09/2026</td>
+                        </tr>
+                        <tr>
+                            <td>1039</td>
+                            <td><a href="demanda-detalhes.html">Erro de calculo no relatorio financeiro</a></td>
+                            <td>ERP Interno</td>
+                            <td>Maria Souza</td>
+                            <td>11/09/2026</td>
+                        </tr>
+                        <tr>
+                            <td>1031</td>
+                            <td><a href="demanda-detalhes.html">Indisponibilidade da API de pagamentos</a></td>
+                            <td>Portal do Cliente</td>
+                            <td>Joao Almeida</td>
+                            <td>18/09/2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Demandas que estao perto de vencer -->
+        <div class="card">
+            <div class="card-header">Demandas proximas do prazo</div>
+            <div class="card-body table-responsive">
+                <table class="table table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Titulo</th>
+                            <th>Tipo</th>
+                            <th>Prioridade</th>
+                            <th>Status</th>
+                            <th>Prazo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1042</td>
+                            <td><a href="demanda-detalhes.html">Falha no login apos expiracao do token</a></td>
+                            <td>Defeito</td>
+                            <td><span class="badge bg-danger">Critica</span></td>
+                            <td><span class="badge bg-primary">Aberta</span></td>
+                            <td>10/09/2026</td>
+                        </tr>
+                        <tr>
+                            <td>1028</td>
+                            <td><a href="demanda-detalhes.html">Exportar listagem de demandas em CSV</a></td>
+                            <td>Melhoria</td>
+                            <td><span class="badge bg-warning text-dark">Alta</span></td>
+                            <td><span class="badge bg-warning text-dark">Em andamento</span></td>
+                            <td>12/09/2026</td>
+                        </tr>
+                        <tr>
+                            <td>1019</td>
+                            <td><a href="demanda-detalhes.html">Atualizar manual de instalacao</a></td>
+                            <td>Documentacao</td>
+                            <td><span class="badge bg-primary">Media</span></td>
+                            <td><span class="badge bg-info text-dark">Em revisao</span></td>
+                            <td>13/09/2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

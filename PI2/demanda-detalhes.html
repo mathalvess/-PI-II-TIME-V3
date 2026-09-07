@@ -1,0 +1,165 @@
+<!-- Autor: Lucas Marassi Cipriano Pereira
+     Tela de Detalhes da Demanda - Sistema de Acompanhamento de Demandas
+     Projeto Integrador 2 -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Demanda - SAD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <!-- Menu de navegacao -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="dashboard.html">SAD</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="demandas.html">Demandas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="demanda-form.html">Nova Demanda</a></li>
+                </ul>
+                <span class="navbar-text me-3">Lucas Marassi (Administrador)</span>
+                <a href="index.html" class="btn btn-outline-light btn-sm">Sair</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">Demanda 1035</h4>
+            <div>
+                <a href="demandas.html" class="btn btn-secondary">Voltar</a>
+                <a href="demanda-form.html" class="btn btn-primary">Editar</a>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <!-- Coluna da esquerda: descricao, comentarios e historico -->
+            <div class="col-md-8">
+
+                <div class="card mb-3">
+                    <div class="card-header">Implementar filtro por responsavel</div>
+                    <div class="card-body">
+                        <p>
+                            A listagem de demandas hoje permite filtrar apenas por status e
+                            prioridade. E necessario acrescentar o filtro por responsavel,
+                            incluindo a opcao "Nao atribuido" para localizar demandas que
+                            ainda nao tem responsavel definido.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Comentarios da demanda -->
+                <div class="card mb-3">
+                    <div class="card-header">Comentarios</div>
+                    <div class="card-body">
+
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item">
+                                <strong>Ana Ribeiro</strong>
+                                <small class="text-muted">01/09/2026 09:14</small>
+                                <p class="mb-0">Sugiro usar o mesmo select ja usado no filtro de prioridade.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Joao Almeida</strong>
+                                <small class="text-muted">02/09/2026 15:40</small>
+                                <p class="mb-0">Filtro feito no frontend. Falta ajustar a consulta no backend.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Lucas Marassi</strong>
+                                <small class="text-muted">05/09/2026 11:02</small>
+                                <p class="mb-0">Prazo ajustado para 19/09 por causa da demanda 1028.</p>
+                            </li>
+                        </ul>
+
+                        <form action="demanda-detalhes.html">
+                            <div class="mb-3">
+                                <label for="comentario" class="form-label">Novo comentario</label>
+                                <textarea class="form-control" id="comentario" name="comentario" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Comentar</button>
+                        </form>
+
+                    </div>
+                </div>
+
+                <!-- Historico de alteracoes da demanda -->
+                <div class="card">
+                    <div class="card-header">Historico de alteracoes</div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <small class="text-muted">05/09/2026 11:02</small><br>
+                                Lucas Marassi alterou o prazo de 12/09/2026 para 19/09/2026.
+                            </li>
+                            <li class="list-group-item">
+                                <small class="text-muted">02/09/2026 15:38</small><br>
+                                Joao Almeida alterou o status de Aberta para Em andamento.
+                            </li>
+                            <li class="list-group-item">
+                                <small class="text-muted">30/08/2026 08:21</small><br>
+                                Lucas Marassi alterou a prioridade de Media para Alta.
+                            </li>
+                            <li class="list-group-item">
+                                <small class="text-muted">29/08/2026 17:55</small><br>
+                                Lucas Marassi atribuiu a demanda para Joao Almeida.
+                            </li>
+                            <li class="list-group-item">
+                                <small class="text-muted">28/08/2026 10:03</small><br>
+                                Demanda criada por Lucas Marassi com status Aberta.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Coluna da direita: dados e acoes -->
+            <div class="col-md-4">
+
+                <div class="card mb-3">
+                    <div class="card-header">Dados da demanda</div>
+                    <div class="card-body">
+                        <p><strong>Codigo:</strong> 1035</p>
+                        <p><strong>Tipo:</strong> Tarefa</p>
+                        <p><strong>Prioridade:</strong> <span class="badge bg-warning text-dark">Alta</span></p>
+                        <p><strong>Status:</strong> <span class="badge bg-warning text-dark">Em andamento</span></p>
+                        <p><strong>Projeto:</strong> Portal do Cliente</p>
+                        <p><strong>Responsavel:</strong> Joao Almeida</p>
+                        <p><strong>Criacao:</strong> 28/08/2026 10:03</p>
+                        <p><strong>Atualizacao:</strong> 05/09/2026 11:02</p>
+                        <p class="mb-0"><strong>Prazo:</strong> 19/09/2026</p>
+                    </div>
+                </div>
+
+                <!-- A demanda esta Em andamento, entao so pode ir para Em revisao ou ser cancelada -->
+                <div class="card">
+                    <div class="card-header">Acoes</div>
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary w-100 mb-2">Enviar para revisao</button>
+                        <button type="button" class="btn btn-success w-100 mb-2" disabled>Concluir</button>
+                        <button type="button" class="btn btn-danger w-100">Cancelar demanda</button>
+                        <small class="text-muted">
+                            A demanda so pode ser concluida depois de passar por Em revisao.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
