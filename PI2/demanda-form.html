@@ -1,0 +1,124 @@
+<!-- Autor: Lucas Marassi Cipriano Pereira
+     Tela de Cadastro/Edicao de Demanda - Sistema de Acompanhamento de Demandas
+     Projeto Integrador 2 -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Demanda - SAD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <!-- Menu de navegacao -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="dashboard.html">SAD</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="demandas.html">Demandas</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="demanda-form.html">Nova Demanda</a></li>
+                </ul>
+                <span class="navbar-text me-3">Lucas Marassi (Administrador)</span>
+                <a href="index.html" class="btn btn-outline-light btn-sm">Sair</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <h4>Nova Demanda</h4>
+        <p class="text-muted">Preencha os dados da demanda</p>
+
+        <div class="card">
+            <div class="card-body">
+                <form action="demanda-detalhes.html">
+                    <div class="row">
+
+                        <div class="col-md-12 mb-3">
+                            <label for="titulo" class="form-label">Titulo *</label>
+                            <input type="text" class="form-control" id="titulo" name="titulo" maxlength="120" required>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="descricao" class="form-label">Descricao *</label>
+                            <textarea class="form-control" id="descricao" name="descricao" rows="5" required></textarea>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="tipo" class="form-label">Tipo *</label>
+                            <select class="form-select" id="tipo" name="tipo" required>
+                                <option value="">Selecione</option>
+                                <option value="tarefa">Tarefa</option>
+                                <option value="defeito">Defeito</option>
+                                <option value="melhoria">Melhoria</option>
+                                <option value="documentacao">Documentacao</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="prioridade" class="form-label">Prioridade *</label>
+                            <select class="form-select" id="prioridade" name="prioridade" required>
+                                <option value="">Selecione</option>
+                                <option value="critica">Critica</option>
+                                <option value="alta">Alta</option>
+                                <option value="media">Media</option>
+                                <option value="baixa">Baixa</option>
+                            </select>
+                        </div>
+
+                        <!-- Toda demanda comeca com status Aberta, por isso o campo fica travado -->
+                        <div class="col-md-4 mb-3">
+                            <label for="status" class="form-label">Status</label>
+                            <input type="text" class="form-control" id="status" name="status" value="Aberta" readonly>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="projeto" class="form-label">Projeto *</label>
+                            <select class="form-select" id="projeto" name="projeto" required>
+                                <option value="">Selecione</option>
+                                <option value="portal">Portal do Cliente</option>
+                                <option value="erp">ERP Interno</option>
+                                <option value="app">Aplicativo Mobile</option>
+                            </select>
+                        </div>
+
+                        <!-- O responsavel pode ficar em branco e ser definido depois -->
+                        <div class="col-md-4 mb-3">
+                            <label for="responsavel" class="form-label">Responsavel</label>
+                            <select class="form-select" id="responsavel" name="responsavel">
+                                <option value="">Nao atribuido</option>
+                                <option value="ana">Ana Ribeiro</option>
+                                <option value="carlos">Carlos Nunes</option>
+                                <option value="joao">Joao Almeida</option>
+                                <option value="maria">Maria Souza</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="prazo" class="form-label">Prazo de finalizacao</label>
+                            <input type="date" class="form-control" id="prazo" name="prazo">
+                            <small class="text-muted">Nao pode ser feriado nacional.</small>
+                        </div>
+
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <a href="demandas.html" class="btn btn-secondary">Cancelar</a>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
