@@ -1,0 +1,94 @@
+<!-- Autor: Eduardo Campos Ferreira Filho
+     Tela de Login - Sistema de Acompanhamento de Demandas
+     Projeto Integrador 2 -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SAD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="pagina-login d-flex align-items-center justify-content-center min-vh-100 p-3">
+
+    <main class="card cartao-login border-0 shadow-lg overflow-hidden w-100">
+        <div class="row g-0">
+
+            <section class="col-lg-6 painel-marca text-white p-5 d-none d-lg-flex flex-column justify-content-between">
+
+                <div>
+                    <div class="logo-sad mb-4">SAD</div>
+                    <h1 class="h3 fw-bold lh-sm mb-3">Sistema de Acompanhamento de Demandas</h1>
+                    <p class="opacity-75 mb-0">
+                        Organize tarefas, defeitos, melhorias e documentacao dos
+                        projetos da equipe em um so lugar.
+                    </p>
+                </div>
+
+                <ul class="lista-recursos list-unstyled mb-0">
+                    <li>Acompanhamento das demandas por status e prioridade</li>
+                    <li>Registro de comentarios e historico de alteracoes</li>
+                    <li>Visao geral dos projetos no painel inicial</li>
+                </ul>
+
+            </section>
+
+            <section class="col-lg-6 bg-white p-4 p-sm-5">
+
+                <header class="text-center mb-4 d-lg-none">
+                    <div class="logo-sad logo-sad-compacto mx-auto mb-3">SAD</div>
+                    <h1 class="h5 fw-bold texto-marca mb-1">Sistema de Acompanhamento de Demandas</h1>
+                </header>
+
+                <header class="mb-4 d-none d-lg-block">
+                    <h2 class="h4 fw-bold mb-1">Acessar o sistema</h2>
+                    <p class="text-secondary small mb-0">Informe suas credenciais para continuar.</p>
+                </header>
+
+                <div class="alert alert-danger py-2 small d-none" role="alert">
+                    E-mail ou senha incorretos. Verifique os dados e tente novamente.
+                </div>
+
+                <form action="dashboard.html" method="get">
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label fw-semibold">E-mail</label>
+                        <input type="email" class="form-control form-control-lg" id="email"
+                               name="email" placeholder="usuario@puccampinas.edu.br"
+                               autocomplete="username" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="senha" class="form-label fw-semibold">Senha</label>
+                        <input type="password" class="form-control form-control-lg" id="senha"
+                               name="senha" placeholder="Digite sua senha"
+                               autocomplete="current-password" required>
+                    </div>
+
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" id="lembrar" name="lembrar">
+                        <label class="form-check-label small text-secondary" for="lembrar">
+                            Manter conectado neste computador
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-marca btn-lg w-100 fw-semibold">Entrar</button>
+
+                </form>
+
+                <footer class="text-center mt-4 pt-3 border-top">
+                    <p class="text-secondary small mb-0">
+                        Acesso restrito aos usuarios cadastrados pelo administrador.
+                    </p>
+                </footer>
+
+            </section>
+
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
