@@ -1,0 +1,111 @@
+// Autor: Matheus Augusto Alves
+// Filtros da tela de listagem de demandas
+// Sistema de Acompanhamento de Demandas
+// Projeto Integrador 2
+
+const formulario = document.querySelector("form");
+
+const busca = document.getElementById("busca");
+const status = document.getElementById("status");
+const prioridade = document.getElementById("prioridade");
+const tipo = document.getElementById("tipo");
+const responsavel = document.getElementById("responsavel");
+
+const linhas = document.querySelectorAll("tbody tr");
+
+formulario.addEventListener("submit", function(event) {
+
+    // Impede que a pagina seja recarregada
+    event.preventDefault();
+
+    linhas.forEach(function(linha) {
+
+        // Pega os dados de cada linha da tabela
+        const tituloTabela = linha.children[1].textContent.toLowerCase();
+        const tipoTabela = linha.children[2].textContent.toLowerCase();
+        const prioridadeTabela = linha.children[3].textContent.toLowerCase();
+        const statusTabela = linha.children[4].textContent.toLowerCase();
+        const responsavelTabela = linha.children[6].textContent.toLowerCase();
+
+        let mostrar = true;
+
+        // Filtro de busca pelo titulo
+        if (busca.value != "") {
+
+            const textoBusca = busca.value.toLowerCase();
+
+            if (!tituloTabela.includes(textoBusca)) {
+                mostrar = false;
+            }
+        }
+
+        // Filtro por tipo
+        if (tipo.value != "") {
+
+            if (!tipoTabela.includes(tipo.value)) {
+                mostrar = false;
+            }
+        }
+
+        // Filtro por prioridade
+        if (prioridade.value != "") {
+
+            if (!prioridadeTabela.includes(prioridade.value)) {
+                mostrar = false;
+            }
+        }
+
+        // Filtro por status
+        if (status.value != "") {
+
+            let statusEscolhido = status.value;
+
+            if (statusEscolhido == "andamento") {
+                statusEscolhido = "em andamento";
+            }
+
+            if (statusEscolhido == "revisao") {
+                statusEscolhido = "em revisao";
+            }
+
+            if (!statusTabela.includes(statusEscolhido)) {
+                mostrar = false;
+            }
+        }
+
+        // Filtro por responsavel
+        if (responsavel.value != "") {
+
+            let nomeResponsavel = responsavel.value;
+
+            if (nomeResponsavel == "ana") {
+                nomeResponsavel = "ana ribeiro";
+            }
+
+            if (nomeResponsavel == "carlos") {
+                nomeResponsavel = "carlos nunes";
+            }
+
+            if (nomeResponsavel == "joao") {
+                nomeResponsavel = "joao almeida";
+            }
+
+            if (nomeResponsavel == "maria") {
+                nomeResponsavel = "maria souza";
+            }
+
+            if (!responsavelTabela.includes(nomeResponsavel)) {
+                mostrar = false;
+            }
+        }
+
+        // Mostra ou esconde a linha
+        if (mostrar == true) {
+            linha.style.display = "";
+        } else {
+            linha.style.display = "none";
+        }
+
+    });
+
+});
