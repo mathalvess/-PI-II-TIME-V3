@@ -1,4 +1,4 @@
-/* Autor: Lucas Marassi Cipriano Pereira
+/* Autor: Luiz Felipe Viotto Martins
    Validacoes da tela de Cadastro/Edicao de Demanda - Projeto Integrador 2 */
 
 const formulario = document.querySelector("#formDemanda");
