@@ -38,17 +38,20 @@
 
         <div class="card">
             <div class="card-body">
-                <form action="demanda-detalhes.html">
+                <!-- novalidate: as mensagens de erro vem do JavaScript -->
+                <form id="formDemanda" action="demanda-detalhes.html" novalidate>
                     <div class="row">
 
                         <div class="col-md-12 mb-3">
                             <label for="titulo" class="form-label">Titulo *</label>
                             <input type="text" class="form-control" id="titulo" name="titulo" maxlength="120" required>
+                            <div class="invalid-feedback" id="erroTitulo"></div>
                         </div>
 
                         <div class="col-md-12 mb-3">
                             <label for="descricao" class="form-label">Descricao *</label>
                             <textarea class="form-control" id="descricao" name="descricao" rows="5" required></textarea>
+                            <div class="invalid-feedback" id="erroDescricao"></div>
                         </div>
 
                         <div class="col-md-4 mb-3">
@@ -60,6 +63,7 @@
                                 <option value="melhoria">Melhoria</option>
                                 <option value="documentacao">Documentacao</option>
                             </select>
+                            <div class="invalid-feedback" id="erroTipo"></div>
                         </div>
 
                         <div class="col-md-4 mb-3">
@@ -71,12 +75,14 @@
                                 <option value="media">Media</option>
                                 <option value="baixa">Baixa</option>
                             </select>
+                            <div class="invalid-feedback" id="erroPrioridade"></div>
                         </div>
 
                         <!-- Toda demanda comeca com status Aberta, por isso o campo fica travado -->
                         <div class="col-md-4 mb-3">
                             <label for="status" class="form-label">Status</label>
                             <input type="text" class="form-control" id="status" name="status" value="Aberta" readonly>
+                            <div class="invalid-feedback" id="erroStatus"></div>
                         </div>
 
                         <div class="col-md-4 mb-3">
@@ -87,6 +93,7 @@
                                 <option value="erp">ERP Interno</option>
                                 <option value="app">Aplicativo Mobile</option>
                             </select>
+                            <div class="invalid-feedback" id="erroProjeto"></div>
                         </div>
 
                         <!-- O responsavel pode ficar em branco e ser definido depois -->
@@ -104,6 +111,7 @@
                         <div class="col-md-4 mb-3">
                             <label for="prazo" class="form-label">Prazo de finalizacao</label>
                             <input type="date" class="form-control" id="prazo" name="prazo">
+                            <div class="invalid-feedback" id="erroPrazo"></div>
                             <small class="text-muted">Nao pode ser feriado nacional.</small>
                         </div>
 
@@ -117,8 +125,17 @@
             </div>
         </div>
 
+        <!-- Resultado: so aparece quando o formulario esta valido -->
+        <div id="painelResultado" class="card mt-3 d-none">
+            <div class="card-header">Dados validados com sucesso (nada foi enviado ao servidor)</div>
+            <div class="card-body">
+                <pre id="resultado" class="mb-0"></pre>
+            </div>
+        </div>
+
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="js/demanda-form.js"></script>
 </body>
 </html>
