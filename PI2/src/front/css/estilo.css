@@ -1,0 +1,31 @@
+/* Autor: Lucas Marassi Cipriano Pereira
+   Sistema de Acompanhamento de Demandas - Projeto Integrador 2
+   Estilos proprios do projeto. O resto vem do Bootstrap. */
+
+/* Fundo cinza claro para os cards brancos se destacarem */
+body {
+  background-color: #f2f2f2;
+}
+
+/* Espaco entre a navbar e o conteudo */
+main {
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+
+/* Numeros grandes dos cards do dashboard */
+.numero {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* Deixa as tabelas um pouco menores para caber mais colunas */
+table {
+  font-size: 14px;
+}
+
+/* Caixa do login centralizada */
+.caixa-login {
+  max-width: 400px;
+  margin: 80px auto;
+}
