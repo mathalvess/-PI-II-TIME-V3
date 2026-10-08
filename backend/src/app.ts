@@ -1,3 +1,9 @@
+/**
+ * Projeto Integrador II - Sistema de Acompanhamento de Demandas
+ * Arquivo: src/app.ts
+ * Autor: Pedro Henrique Bassetto Ruiz
+ * Descrição: cria a aplicação Express e define as rotas iniciais.
+ */
 import express, { Request, Response } from "express";
 
 const app = express();
