@@ -7,7 +7,7 @@
 * Matheus Augusto Alves - 26011776
 * Luis Felipe Viotto Martins - 26006047
 * Lucas Marassi Cipriano Pererira - 26006147
-* Pedro Henrrique Basstto Ruiz - 26001779
+* Pedro Henrique Bassetto Ruiz - 26001779
 * Eduardo Campos Ferreira Filho - 26002602
 ### Curso
 
@@ -31,3 +31,17 @@ Fernando Silveira
 Repositório destinado ao desenvolvimento e acompanhamento das atividades do Projeto Integrador II.
 
 As atividades serão organizadas e acompanhadas por meio do GitHub Projects, permitindo o controle das tarefas e do desenvolvimento do projeto ao longo do semestre.
+
+## Como rodar o backend
+
+Requisito: Node.js na versão LTS (confira com `node -v`).
+
+```
+cd backend
+npm install
+npm run dev
+```
+
+Depois acesse no navegador:
+- http://localhost:3000 (mensagem de servidor funcionando)
+- http://localhost:3000/health (resposta `{"status":"ok"}`)
