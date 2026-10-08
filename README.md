@@ -6,7 +6,7 @@
 
 * Matheus Augusto Alves - 26011776
 * Luis Felipe Viotto Martins - 26006047
-* Lucas Marassi Cipriano Pererira - 260066147
+* Lucas Marassi Cipriano Pererira - 26006147
 * Pedro Henrrique Basstto Ruiz - 26001779
 * Eduardo Campos Ferreira Filho - 26002602
 ### Curso
