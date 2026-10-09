@@ -33,60 +33,67 @@
 
     <main class="container">
 
-        <h4>Nova Demanda</h4>
+        <h4 id="titulo-pagina">Nova Demanda</h4>
         <p class="text-muted">Preencha os dados da demanda</p>
+
+        <!-- Caixa de aviso (erros da API) -->
+        <div id="mensagem"></div>
 
         <div class="card">
             <div class="card-body">
-                <form action="demanda-detalhes.html">
+                <!-- novalidate: as mensagens de erro vem do js/demanda-form-validacao.js -->
+                <form id="form-demanda" novalidate>
                     <div class="row">
 
                         <div class="col-md-12 mb-3">
                             <label for="titulo" class="form-label">Titulo *</label>
                             <input type="text" class="form-control" id="titulo" name="titulo" maxlength="120" required>
+                            <div class="invalid-feedback" id="erroTitulo"></div>
                         </div>
 
                         <div class="col-md-12 mb-3">
                             <label for="descricao" class="form-label">Descricao *</label>
                             <textarea class="form-control" id="descricao" name="descricao" rows="5" required></textarea>
+                            <div class="invalid-feedback" id="erroDescricao"></div>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label for="tipo" class="form-label">Tipo *</label>
                             <select class="form-select" id="tipo" name="tipo" required>
                                 <option value="">Selecione</option>
-                                <option value="tarefa">Tarefa</option>
-                                <option value="defeito">Defeito</option>
-                                <option value="melhoria">Melhoria</option>
-                                <option value="documentacao">Documentacao</option>
+                                <option value="Tarefa">Tarefa</option>
+                                <option value="Defeito">Defeito</option>
+                                <option value="Melhoria">Melhoria</option>
+                                <option value="Documentacao">Documentacao</option>
                             </select>
+                            <div class="invalid-feedback" id="erroTipo"></div>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label for="prioridade" class="form-label">Prioridade *</label>
                             <select class="form-select" id="prioridade" name="prioridade" required>
                                 <option value="">Selecione</option>
-                                <option value="critica">Critica</option>
-                                <option value="alta">Alta</option>
-                                <option value="media">Media</option>
-                                <option value="baixa">Baixa</option>
+                                <option value="Critica">Critica</option>
+                                <option value="Alta">Alta</option>
+                                <option value="Media">Media</option>
+                                <option value="Baixa">Baixa</option>
                             </select>
+                            <div class="invalid-feedback" id="erroPrioridade"></div>
                         </div>
 
                         <!-- Toda demanda comeca com status Aberta, por isso o campo fica travado -->
                         <div class="col-md-4 mb-3">
                             <label for="status" class="form-label">Status</label>
                             <input type="text" class="form-control" id="status" name="status" value="Aberta" readonly>
+                            <div class="invalid-feedback" id="erroStatus"></div>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label for="projeto" class="form-label">Projeto *</label>
                             <select class="form-select" id="projeto" name="projeto" required>
                                 <option value="">Selecione</option>
-                                <option value="portal">Portal do Cliente</option>
-                                <option value="erp">ERP Interno</option>
-                                <option value="app">Aplicativo Mobile</option>
                             </select>
+                            <div class="invalid-feedback" id="erroProjeto"></div>
                         </div>
 
                         <!-- O responsavel pode ficar em branco e ser definido depois -->
@@ -94,16 +101,13 @@
                             <label for="responsavel" class="form-label">Responsavel</label>
                             <select class="form-select" id="responsavel" name="responsavel">
                                 <option value="">Nao atribuido</option>
-                                <option value="ana">Ana Ribeiro</option>
-                                <option value="carlos">Carlos Nunes</option>
-                                <option value="joao">Joao Almeida</option>
-                                <option value="maria">Maria Souza</option>
                             </select>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label for="prazo" class="form-label">Prazo de finalizacao</label>
                             <input type="date" class="form-control" id="prazo" name="prazo">
+                            <div class="invalid-feedback" id="erroPrazo"></div>
                             <small class="text-muted">Nao pode ser feriado nacional.</small>
                         </div>
 
@@ -120,5 +124,8 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="js/comum.js"></script>
+    <script src="js/demanda-form-validacao.js"></script>
+    <script src="js/demanda-form.js"></script>
 </body>
 </html>

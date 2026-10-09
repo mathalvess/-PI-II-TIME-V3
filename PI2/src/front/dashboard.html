@@ -33,6 +33,9 @@
 
     <main class="container">
 
+        <!-- Caixa de aviso (erros ao carregar os dados) -->
+        <div id="mensagem"></div>
+
         <h4>Dashboard</h4>
         <p class="text-muted">Resumo das demandas cadastradas</p>
 
@@ -42,7 +45,7 @@
             <div class="col-md-2 col-6 mb-3">
                 <div class="card text-center">
                     <div class="card-body">
-                        <p class="numero">148</p>
+                        <p class="numero" id="n-total">-</p>
                         <p class="mb-0">Total</p>
                     </div>
                 </div>
@@ -51,7 +54,7 @@
             <div class="col-md-2 col-6 mb-3">
                 <div class="card text-center">
                     <div class="card-body">
-                        <p class="numero">32</p>
+                        <p class="numero" id="n-aberta">-</p>
                         <p class="mb-0">Abertas</p>
                     </div>
                 </div>
@@ -60,7 +63,7 @@
             <div class="col-md-2 col-6 mb-3">
                 <div class="card text-center">
                     <div class="card-body">
-                        <p class="numero">41</p>
+                        <p class="numero" id="n-andamento">-</p>
                         <p class="mb-0">Em andamento</p>
                     </div>
                 </div>
@@ -69,7 +72,7 @@
             <div class="col-md-2 col-6 mb-3">
                 <div class="card text-center">
                     <div class="card-body">
-                        <p class="numero">18</p>
+                        <p class="numero" id="n-revisao">-</p>
                         <p class="mb-0">Em revisao</p>
                     </div>
                 </div>
@@ -78,7 +81,7 @@
             <div class="col-md-2 col-6 mb-3">
                 <div class="card text-center">
                     <div class="card-body">
-                        <p class="numero">49</p>
+                        <p class="numero" id="n-concluida">-</p>
                         <p class="mb-0">Concluidas</p>
                     </div>
                 </div>
@@ -87,7 +90,7 @@
             <div class="col-md-2 col-6 mb-3">
                 <div class="card text-center">
                     <div class="card-body">
-                        <p class="numero">8</p>
+                        <p class="numero" id="n-cancelada">-</p>
                         <p class="mb-0">Canceladas</p>
                     </div>
                 </div>
@@ -112,19 +115,19 @@
                             <tbody>
                                 <tr>
                                     <td><span class="badge bg-danger">Critica</span></td>
-                                    <td>14</td>
+                                    <td id="prioridade-Critica">-</td>
                                 </tr>
                                 <tr>
                                     <td><span class="badge bg-warning text-dark">Alta</span></td>
-                                    <td>37</td>
+                                    <td id="prioridade-Alta">-</td>
                                 </tr>
                                 <tr>
                                     <td><span class="badge bg-primary">Media</span></td>
-                                    <td>64</td>
+                                    <td id="prioridade-Media">-</td>
                                 </tr>
                                 <tr>
                                     <td><span class="badge bg-secondary">Baixa</span></td>
-                                    <td>33</td>
+                                    <td id="prioridade-Baixa">-</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -146,19 +149,19 @@
                             <tbody>
                                 <tr>
                                     <td>Tarefa</td>
-                                    <td>58</td>
+                                    <td id="tipo-Tarefa">-</td>
                                 </tr>
                                 <tr>
                                     <td>Defeito</td>
-                                    <td>44</td>
+                                    <td id="tipo-Defeito">-</td>
                                 </tr>
                                 <tr>
                                     <td>Melhoria</td>
-                                    <td>31</td>
+                                    <td id="tipo-Melhoria">-</td>
                                 </tr>
                                 <tr>
                                     <td>Documentacao</td>
-                                    <td>15</td>
+                                    <td id="tipo-Documentacao">-</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -182,28 +185,8 @@
                             <th>Prazo</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1042</td>
-                            <td><a href="demanda-detalhes.html">Falha no login apos expiracao do token</a></td>
-                            <td>Portal do Cliente</td>
-                            <td>Nao atribuido</td>
-                            <td>10/09/2026</td>
-                        </tr>
-                        <tr>
-                            <td>1039</td>
-                            <td><a href="demanda-detalhes.html">Erro de calculo no relatorio financeiro</a></td>
-                            <td>ERP Interno</td>
-                            <td>Maria Souza</td>
-                            <td>11/09/2026</td>
-                        </tr>
-                        <tr>
-                            <td>1031</td>
-                            <td><a href="demanda-detalhes.html">Indisponibilidade da API de pagamentos</a></td>
-                            <td>Portal do Cliente</td>
-                            <td>Joao Almeida</td>
-                            <td>18/09/2026</td>
-                        </tr>
+                    <tbody id="tabela-criticas">
+                        <!-- As linhas sao criadas pelo codigo em js/dashboard.js com os dados da API -->
                     </tbody>
                 </table>
             </div>
@@ -224,31 +207,8 @@
                             <th>Prazo</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1042</td>
-                            <td><a href="demanda-detalhes.html">Falha no login apos expiracao do token</a></td>
-                            <td>Defeito</td>
-                            <td><span class="badge bg-danger">Critica</span></td>
-                            <td><span class="badge bg-primary">Aberta</span></td>
-                            <td>10/09/2026</td>
-                        </tr>
-                        <tr>
-                            <td>1028</td>
-                            <td><a href="demanda-detalhes.html">Exportar listagem de demandas em CSV</a></td>
-                            <td>Melhoria</td>
-                            <td><span class="badge bg-warning text-dark">Alta</span></td>
-                            <td><span class="badge bg-warning text-dark">Em andamento</span></td>
-                            <td>12/09/2026</td>
-                        </tr>
-                        <tr>
-                            <td>1019</td>
-                            <td><a href="demanda-detalhes.html">Atualizar manual de instalacao</a></td>
-                            <td>Documentacao</td>
-                            <td><span class="badge bg-primary">Media</span></td>
-                            <td><span class="badge bg-info text-dark">Em revisao</span></td>
-                            <td>13/09/2026</td>
-                        </tr>
+                    <tbody id="tabela-proximas">
+                        <!-- As linhas sao criadas pelo codigo em js/dashboard.js com os dados da API -->
                     </tbody>
                 </table>
             </div>
@@ -257,5 +217,7 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="js/comum.js"></script>
+    <script src="js/dashboard.js"></script>
 </body>
 </html>
