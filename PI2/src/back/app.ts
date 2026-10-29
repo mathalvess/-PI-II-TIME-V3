@@ -7,6 +7,7 @@ import DemandaRouter from "./router/DemandaRouter";
 import ProjetoRouter from "./router/ProjetoRouter";
 import UsuarioRouter from "./router/UsuarioRouter";
 import LoginRouter from "./router/LoginRouter";
+import FeriadoRouter from "./router/FeriadoRouter";
 import AcessoMiddleware from "./middleware/AcessoMiddleware";
 
 // Cria o servidor Express (ainda nao esta escutando nenhuma porta).
@@ -35,6 +36,9 @@ app.use("/demanda", acesso.identificar_Usuario, demandaRoteador.criarRotasDemand
 const projetoRoteador = new ProjetoRouter();
 app.use("/projeto", acesso.identificar_Usuario, projetoRoteador.criarRotasProjeto());
 
+// Consulta de feriados nacionais (BrasilAPI) - Pedro
+const feriadoRoteador = new FeriadoRouter();
+app.use("/feriado", feriadoRoteador.criarRotasFeriado());
 const usuarioRoteador = new UsuarioRouter();
 app.use("/usuario", acesso.identificar_Usuario, usuarioRoteador.criarRotasUsuario());
 

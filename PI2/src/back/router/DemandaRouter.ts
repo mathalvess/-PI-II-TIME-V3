@@ -9,6 +9,7 @@ import express from "express";
 import DemandaControl from "../control/DemandaControl";
 import DemandaMiddleware from "../middleware/DemandaMiddleware";
 import AcessoMiddleware from "../middleware/AcessoMiddleware";
+import FeriadoMiddleware from "../middleware/FeriadoMiddleware";
 
 // Classe que define as rotas relacionadas ao recurso "Demanda".
 export default class DemandaRouter {
@@ -18,6 +19,7 @@ export default class DemandaRouter {
     private _demandaControl: DemandaControl;
     private _demandaMiddleware: DemandaMiddleware;
     private _acessoMiddleware: AcessoMiddleware;
+    private _feriadoMiddleware: FeriadoMiddleware;
 
     // O construtor roda quando se faz "new DemandaRouter()".
     // Cria o roteador, o control e o middleware.
@@ -26,6 +28,7 @@ export default class DemandaRouter {
         this._demandaControl = new DemandaControl();
         this._demandaMiddleware = new DemandaMiddleware();
         this._acessoMiddleware = new AcessoMiddleware();
+        this._feriadoMiddleware = new FeriadoMiddleware();
     }
 
     // Cria e configura as rotas de demanda.
@@ -55,6 +58,7 @@ export default class DemandaRouter {
             this._acessoMiddleware.pode_CriarDemanda,
             this._demandaMiddleware.existe_Id_projeto,
             this._demandaMiddleware.existe_Id_responsavel,
+            this._feriadoMiddleware.validar_PrazoFeriado,
             this._demandaControl.demanda_create_control
         );
 
@@ -66,6 +70,7 @@ export default class DemandaRouter {
             this._acessoMiddleware.pode_EditarDemanda,
             this._demandaMiddleware.existe_Id_projeto,
             this._demandaMiddleware.existe_Id_responsavel,
+            this._feriadoMiddleware.validar_PrazoFeriado,
             this._demandaControl.demanda_update_control
         );
 
