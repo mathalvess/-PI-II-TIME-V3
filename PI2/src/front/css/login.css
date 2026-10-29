@@ -1,0 +1,102 @@
+/* Autor: Eduardo Campos Ferreira Filho
+   Sistema de Acompanhamento de Demandas - Projeto Integrador 2
+   Estilos da tela de login. Carregado depois do Bootstrap e do estilo.css. */
+
+:root {
+  --marca: #212529;
+  --marca-escura: #16181b;
+  --marca-clara: #495057;
+}
+
+.pagina-login {
+  background: linear-gradient(135deg, var(--marca), var(--marca-clara));
+}
+
+.pagina-login main {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.cartao-login {
+  max-width: 900px;
+  border-radius: 1rem;
+}
+
+.painel-marca {
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(160deg, var(--marca-escura), var(--marca-clara));
+  background-size: 18px 18px, auto;
+}
+
+.logo-sad {
+  width: 76px;
+  height: 76px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.logo-sad-compacto {
+  width: 62px;
+  height: 62px;
+  font-size: 1.25rem;
+  color: var(--marca);
+  border-color: var(--marca);
+  background-color: #f2f2f2;
+}
+
+.lista-recursos li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.lista-recursos li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.texto-marca { color: var(--marca); }
+
+.btn-marca {
+  background-color: var(--marca);
+  border-color: var(--marca);
+  color: #fff;
+}
+
+.btn-marca:hover,
+.btn-marca:focus {
+  background-color: var(--marca-escura);
+  border-color: var(--marca-escura);
+  color: #fff;
+}
+
+.pagina-login .form-control:focus {
+  border-color: var(--marca);
+  box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.25);
+}
+
+.pagina-login .form-check-input:checked {
+  background-color: var(--marca);
+  border-color: var(--marca);
+}
+
+@media (max-width: 575.98px) {
+  .cartao-login { border-radius: 0.75rem; }
+}
