@@ -11,7 +11,7 @@ export default class Login {
 
     async buscarUsuario(email: string, senha: string): Promise<RowDataPacket[]> {
         const conexao = new Banco().getConexao();
-        const SQL = "SELECT id_usuario, nome, perfil FROM usuario WHERE email = ? AND senha = MD5(?);";
+        const SQL = "SELECT id_usuario, nome, perfil FROM usuario WHERE email = ? AND senha = SHA2(?, 256);";
         const [linhas] = await conexao.promise().execute<RowDataPacket[]>(SQL, [email, senha]);
         return linhas;
     }

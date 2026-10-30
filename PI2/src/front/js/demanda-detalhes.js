@@ -144,6 +144,7 @@ async function mudarStatus(novoStatus) {
         if (resposta.status) {
             mostrarMensagem("Status atualizado para " + novoStatus + ".", "success");
             carregarDemanda(); // recarrega os dados da tela
+            if (typeof carregarHistorico === "function") carregarHistorico();
         } else {
             mostrarMensagem(resposta.msg); // mensagem da API (por exemplo, mudanca proibida)
         }

@@ -8,6 +8,7 @@ import ProjetoRouter from "./router/ProjetoRouter";
 import UsuarioRouter from "./router/UsuarioRouter";
 import LoginRouter from "./router/LoginRouter";
 import ComentarioRouter from "./router/ComentarioRouter";
+import HistoricoRouter from "./router/HistoricoRouter";
 import AcessoMiddleware from "./middleware/AcessoMiddleware";
 
 // Cria o servidor Express (ainda nao esta escutando nenhuma porta).
@@ -46,6 +47,9 @@ app.use("/login", loginRoteador.criarRotasLogin());
 // Comentarios: GET /comentario/2 lista os da demanda 2; POST /comentario/2 grava um novo.
 const comentarioRoteador = new ComentarioRouter();
 app.use("/comentario", acesso.identificar_Usuario, comentarioRoteador.criarRotasComentario());
+
+const historicoRoteador = new HistoricoRouter();
+app.use("/historico", acesso.identificar_Usuario, historicoRoteador.criarRotasHistorico());
 
 // Tratamento de erros inesperados (por exemplo, o banco de dados fora do ar).
 // O Express reconhece que e um tratador de erros porque a funcao tem 4 parametros.

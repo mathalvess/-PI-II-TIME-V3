@@ -52,6 +52,7 @@ export default class DemandaRouter {
         // responsavel existe), e so depois o control cria.
         this._router.post("/",
             this._demandaMiddleware.validar_DadosDemanda,
+            this._demandaMiddleware.validar_PrazoFeriado,
             this._acessoMiddleware.pode_CriarDemanda,
             this._demandaMiddleware.existe_Id_projeto,
             this._demandaMiddleware.existe_Id_responsavel,
@@ -63,6 +64,7 @@ export default class DemandaRouter {
         this._router.put("/:id",
             this._demandaMiddleware.existe_Demanda,
             this._demandaMiddleware.validar_DadosDemanda,
+            this._demandaMiddleware.validar_PrazoFeriado,
             this._acessoMiddleware.pode_EditarDemanda,
             this._demandaMiddleware.existe_Id_projeto,
             this._demandaMiddleware.existe_Id_responsavel,

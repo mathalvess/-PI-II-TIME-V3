@@ -14,6 +14,7 @@
 import { Request, Response, NextFunction } from "express";
 // Demanda (sem chaves) e a classe principal do arquivo; as constantes vem entre chaves.
 import Demanda, { TIPOS, PRIORIDADES, TRANSICOES } from "../model/Demanda";
+import { ehFeriadoNacional } from "../util/feriados";
 
 export default class DemandaMiddleware {
 
@@ -56,6 +57,34 @@ export default class DemandaMiddleware {
             response.status(400).send(objResposta);
         } else {
             next(); // Tudo certo: chama o proximo passo (o control).
+        }
+    }
+
+    // Rejeita prazos que caiam em feriados nacionais. A validação é no servidor,
+    // portanto não pode ser contornada desativando o JavaScript do navegador.
+    async validar_PrazoFeriado(request: Request, response: Response, next: NextFunction) {
+        const prazo = request.body?.demanda?.prazo;
+        if (!prazo) {
+            next();
+            return;
+        }
+        try {
+            if (await ehFeriadoNacional(String(prazo))) {
+                response.status(400).send({
+                    cod: 1,
+                    status: false,
+                    msg: "O prazo não pode cair em feriado nacional."
+                });
+                return;
+            }
+            next();
+        } catch (erro) {
+            console.error("Falha ao validar feriado nacional:", erro);
+            response.status(503).send({
+                cod: 1,
+                status: false,
+                msg: "Não foi possível validar o prazo com a API de feriados. Tente novamente."
+            });
         }
     }
 
