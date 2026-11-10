@@ -2,26 +2,31 @@
    Sistema de Acompanhamento de Demandas - Projeto Integrador 2
    Estilos da tela de login. Carregado depois do Bootstrap e do estilo.css. */
 
+/* As cores ficam aqui pra trocar num lugar so. A --marca e o mesmo preto da navbar */
 :root {
   --marca: #212529;
   --marca-escura: #16181b;
   --marca-clara: #495057;
 }
 
+/* Fundo em degrade, so na tela de login */
 .pagina-login {
   background: linear-gradient(135deg, var(--marca), var(--marca-clara));
 }
 
+/* Aqui o main e o proprio cartao, entao tira a margem que vem do estilo.css */
 .pagina-login main {
   margin-top: 0;
   margin-bottom: 0;
 }
 
+/* Limita a largura pra nao esticar em monitor grande */
 .cartao-login {
   max-width: 900px;
   border-radius: 1rem;
 }
 
+/* Lado esquerdo do cartao, com uns pontinhos claros pra nao ficar um preto liso */
 .painel-marca {
   background-image:
     radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
@@ -29,6 +34,7 @@
   background-size: 18px 18px, auto;
 }
 
+/* O quadradinho com a sigla SAD, feito so com CSS */
 .logo-sad {
   width: 76px;
   height: 76px;
@@ -44,6 +50,7 @@
   background-color: rgba(255, 255, 255, 0.12);
 }
 
+/* Versao menor pro celular, escura porque ali o fundo e branco */
 .logo-sad-compacto {
   width: 62px;
   height: 62px;
@@ -61,6 +68,7 @@
   opacity: 0.9;
 }
 
+/* A bolinha da lista, desenhada no lugar da padrao */
 .lista-recursos li::before {
   content: "";
   position: absolute;
@@ -74,12 +82,14 @@
 
 .texto-marca { color: var(--marca); }
 
+/* Botao Entrar com o preto do sistema, no lugar do azul do Bootstrap */
 .btn-marca {
   background-color: var(--marca);
   border-color: var(--marca);
   color: #fff;
 }
 
+/* Escurece quando passa o mouse ou foca pelo teclado */
 .btn-marca:hover,
 .btn-marca:focus {
   background-color: var(--marca-escura);
@@ -87,6 +97,7 @@
   color: #fff;
 }
 
+/* Contorno escuro quando clica no campo */
 .pagina-login .form-control:focus {
   border-color: var(--marca);
   box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.25);
@@ -97,6 +108,7 @@
   border-color: var(--marca);
 }
 
+/* No celular os cantos ficam menos arredondados */
 @media (max-width: 575.98px) {
   .cartao-login { border-radius: 0.75rem; }
 }
