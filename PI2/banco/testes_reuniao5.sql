@@ -1,3 +1,5 @@
+-- Autor: Lucas Marassi Cipriano Pereira
+-- Sistema de Acompanhamento de Demandas - Projeto Integrador 2
 -- Testes SQL da Reuniao 5
 -- Execute DEPOIS de criar o banco com banco/schema.sql.
 -- Os INSERTs/UPDATEs ficam dentro de uma transacao e sao desfeitos no final.
