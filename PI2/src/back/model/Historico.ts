@@ -1,3 +1,10 @@
+/*
+ * Autor: Lucas Marassi Cipriano Pereira
+ * Model Historico - Sistema de Acompanhamento de Demandas
+ * Projeto Integrador 2
+ *
+ * Grava e lista o historico automatico das alteracoes de demandas.
+ */
 /* Historico automatico das alteracoes de demandas. */
 import { RowDataPacket, ResultSetHeader } from "mysql2";
 import Banco from "./Banco";

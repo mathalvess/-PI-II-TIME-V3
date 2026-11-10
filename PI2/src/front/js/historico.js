@@ -1,4 +1,6 @@
-/* Carrega o historico de alteracoes da demanda atual. */
+/* Autor: Lucas Marassi Cipriano Pereira
+   Carrega o historico de alteracoes da demanda atual (tela de detalhes)
+   Sistema de Acompanhamento de Demandas - Projeto Integrador 2 */
 const listaHistorico = document.getElementById("lista-historico");
 
 async function carregarHistorico() {

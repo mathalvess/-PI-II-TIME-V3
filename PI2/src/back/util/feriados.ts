@@ -1,4 +1,8 @@
-/**
+/*
+ * Autor: Lucas Marassi Cipriano Pereira
+ * Util Feriados - Sistema de Acompanhamento de Demandas
+ * Projeto Integrador 2
+ *
  * Consulta os feriados nacionais brasileiros pela BrasilAPI.
  * Cache por ano para evitar chamadas repetidas durante o uso do sistema.
  */

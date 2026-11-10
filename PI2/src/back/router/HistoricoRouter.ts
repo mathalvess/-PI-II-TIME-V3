@@ -1,3 +1,10 @@
+/*
+ * Autor: Lucas Marassi Cipriano Pereira
+ * Router Historico - Sistema de Acompanhamento de Demandas
+ * Projeto Integrador 2
+ *
+ * GET /historico/:id -> historico da demanda (so para quem pode ver a demanda).
+ */
 import express from "express";
 import HistoricoControl from "../control/HistoricoControl";
 import DemandaMiddleware from "../middleware/DemandaMiddleware";

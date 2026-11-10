@@ -1,3 +1,10 @@
+/*
+ * Autor: Lucas Marassi Cipriano Pereira
+ * Control Historico - Sistema de Acompanhamento de Demandas
+ * Projeto Integrador 2
+ *
+ * Devolve o historico de alteracoes de uma demanda para a tela de detalhes.
+ */
 import { Request, Response } from "express";
 import Historico from "../model/Historico";
 
