@@ -9,6 +9,7 @@ import UsuarioRouter from "./router/UsuarioRouter";
 import LoginRouter from "./router/LoginRouter";
 import ComentarioRouter from "./router/ComentarioRouter";
 import HistoricoRouter from "./router/HistoricoRouter";
+import FeriadoRouter from "./router/FeriadoRouter";
 import AcessoMiddleware from "./middleware/AcessoMiddleware";
 
 // Cria o servidor Express (ainda nao esta escutando nenhuma porta).
@@ -50,6 +51,10 @@ app.use("/comentario", acesso.identificar_Usuario, comentarioRoteador.criarRotas
 
 const historicoRoteador = new HistoricoRouter();
 app.use("/historico", acesso.identificar_Usuario, historicoRoteador.criarRotasHistorico());
+
+// Feriado: GET /feriado/2026-12-25 diz se a data e feriado nacional (aviso na tela de cadastro).
+const feriadoRoteador = new FeriadoRouter();
+app.use("/feriado", feriadoRoteador.criarRotasFeriado());
 
 // Tratamento de erros inesperados (por exemplo, o banco de dados fora do ar).
 // O Express reconhece que e um tratador de erros porque a funcao tem 4 parametros.
