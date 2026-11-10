@@ -7,8 +7,10 @@
 import { Request, Response } from "express";
 import Comentario from "../model/Comentario";
 
+// Recebe os pedidos de comentario depois que passaram pelas checagens.
 export default class ComentarioControl {
 
+    // Devolve a lista de comentarios de uma demanda.
     async comentario_listar_control(request: Request, response: Response) {
         const id_demanda = Number(request.params.id);
 
@@ -18,9 +20,12 @@ export default class ComentarioControl {
         response.status(200).send({ cod: 1, status: true, msg: "Executado com sucesso", comentarios: lista });
     }
 
+    // Grava um comentario novo.
     async comentario_criar_control(request: Request, response: Response) {
         const id_demanda = Number(request.params.id);
+        // O autor vem do login, nao do que a tela manda. Assim ninguem comenta fingindo ser outro.
         const id_usuario = response.locals.usuario.id_usuario;
+        // O trim tira os espacos sobrando no comeco e no fim.
         const texto = request.body.texto.trim();
 
         const comentario = new Comentario();

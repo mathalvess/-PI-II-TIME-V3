@@ -11,11 +11,13 @@
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
+<!-- A classe pagina-login e o que liga os estilos do login.css nessa tela -->
 <body class="pagina-login d-flex align-items-center justify-content-center min-vh-100 p-3">
 
     <main class="card cartao-login border-0 shadow-lg overflow-hidden w-100">
         <div class="row g-0">
 
+            <!-- Lado esquerdo, a apresentacao. So aparece em tela grande -->
             <section class="col-lg-6 painel-marca text-white p-5 d-none d-lg-flex flex-column justify-content-between">
 
                 <div>
@@ -35,8 +37,10 @@
 
             </section>
 
+            <!-- Lado direito, o formulario -->
             <section class="col-lg-6 bg-white p-4 p-sm-5">
 
+                <!-- No celular o painel some, entao esse cabecalho menor entra no lugar -->
                 <header class="text-center mb-4 d-lg-none">
                     <div class="logo-sad logo-sad-compacto mx-auto mb-3">SAD</div>
                     <h1 class="h5 fw-bold texto-marca mb-1">Sistema de Acompanhamento de Demandas</h1>
@@ -47,10 +51,12 @@
                     <p class="text-secondary small mb-0">Informe suas credenciais para continuar.</p>
                 </header>
 
+                <!-- Comeca escondido. O login.js mostra quando o servidor recusa o login -->
                 <div class="alert alert-danger py-2 small d-none" id="avisoCredenciais" role="alert">
                     E-mail ou senha incorretos. Verifique os dados e tente novamente.
                 </div>
 
+                <!-- novalidate desliga os avisos do navegador, quem valida e o login.js -->
                 <form id="formLogin" action="dashboard.html" method="get" novalidate>
 
                     <div class="mb-3">
@@ -58,6 +64,7 @@
                         <input type="email" class="form-control form-control-lg" id="email"
                                name="email" placeholder="usuario@puccampinas.edu.br"
                                autocomplete="username" required>
+                        <!-- Caixinha vazia onde o login.js escreve o erro do e-mail -->
                         <div class="invalid-feedback" id="erroEmail"></div>
                     </div>
 
@@ -66,6 +73,7 @@
                         <input type="password" class="form-control form-control-lg" id="senha"
                                name="senha" placeholder="Digite sua senha"
                                autocomplete="current-password" required>
+                        <!-- Mesma coisa pro erro da senha -->
                         <div class="invalid-feedback" id="erroSenha"></div>
                     </div>
 
@@ -92,6 +100,7 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <!-- Validacao e envio do login -->
     <script src="js/login.js"></script>
 </body>
 </html>

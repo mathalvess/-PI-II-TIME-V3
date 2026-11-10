@@ -19,7 +19,7 @@
 CREATE DATABASE sad_demandas;
 USE sad_demandas;
 
--- Usuario: quem faz login. A senha e guardada com MD5, nunca como texto puro.
+-- Usuario: quem faz login. A senha e guardada como hash SHA-256 (funcao SHA2), nunca como texto puro.
 CREATE TABLE usuario (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -78,8 +78,8 @@ CREATE TABLE historico (
     id_demanda INT NOT NULL,
     id_usuario INT NOT NULL,
     campo VARCHAR(30) NOT NULL,        -- ex.: status, prioridade, responsavel, prazo
-    valor_anterior VARCHAR(255),
-    valor_novo VARCHAR(255),
+    valor_anterior TEXT,
+    valor_novo TEXT,
     data_hora DATETIME NOT NULL,
     FOREIGN KEY (id_demanda) REFERENCES demanda (id_demanda),
     FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
@@ -88,13 +88,13 @@ CREATE TABLE historico (
 -- ---------------------------------------------------------------------------
 -- DADOS DE EXEMPLO (somente para desenvolvimento)
 -- Todos os usuarios usam a senha de teste Senha@123.
--- A funcao MD5() do MySQL embaralha a senha antes de gravar.
+-- A funcao SHA2(texto, 256) do MySQL embaralha a senha antes de gravar (64 caracteres).
 -- ---------------------------------------------------------------------------
 INSERT INTO usuario (nome, email, senha, perfil) VALUES
-('Lucas Marassi', 'lucas@sad.com', MD5('Senha@123'), 'Administrador'),
-('Ana Ribeiro',   'ana@sad.com',   MD5('Senha@123'), 'Lider de Projeto'),
-('Joao Almeida',  'joao@sad.com',  MD5('Senha@123'), 'Membro da Equipe'),
-('Maria Souza',   'maria@sad.com', MD5('Senha@123'), 'Membro da Equipe');
+('Lucas Marassi', 'lucas@sad.com', SHA2('Senha@123', 256), 'Administrador'),
+('Ana Ribeiro',   'ana@sad.com',   SHA2('Senha@123', 256), 'Lider de Projeto'),
+('Joao Almeida',  'joao@sad.com',  SHA2('Senha@123', 256), 'Membro da Equipe'),
+('Maria Souza',   'maria@sad.com', SHA2('Senha@123', 256), 'Membro da Equipe');
 
 INSERT INTO projeto (nome, descricao) VALUES
 ('Portal do Cliente', 'Portal web de atendimento ao cliente'),

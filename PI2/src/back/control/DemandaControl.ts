@@ -11,7 +11,21 @@
 import { Request, Response } from "express";
 // Importa a classe Demanda do model.
 import Demanda from "../model/Demanda";
+import Historico from "../model/Historico";
 import { filtrarPorProjeto, contarPor } from "../middleware/AcessoMiddleware";
+
+// Funcoes auxiliares do historico. Ficam FORA da classe de proposito: o Express chama os
+// metodos do control "soltos" (sem o objeto), entao dentro deles o "this" fica vazio e
+// "this.registrarHistorico(...)" quebrava com "Erro interno do servidor".
+function normalizarHistorico(valor: unknown): string | null {
+    if (valor === null || valor === undefined || valor === "") return null;
+    if (valor instanceof Date) return valor.toISOString().slice(0, 10);
+    return String(valor);
+}
+
+async function registrarHistorico(idDemanda: number, idUsuario: number, campo: string, anterior: unknown, novo: unknown) {
+    await new Historico().registrar(idDemanda, idUsuario, campo, normalizarHistorico(anterior), normalizarHistorico(novo));
+}
 
 // Como o middleware ja validou, aqui o control so monta o objeto e chama o model.
 export default class DemandaControl {
@@ -39,6 +53,15 @@ export default class DemandaControl {
         // Se gravou, busca a demanda de novo no banco para devolver completa
         // (com o id, o status Aberta e as datas).
         const resultado = isCreated ? await demanda.readByID() : [];
+        if (isCreated && resultado[0]) {
+            const criado = resultado[0];
+            const idUsuario = Number(response.locals.usuario.id_usuario);
+            const idDemanda = Number(criado.id_demanda);
+            await registrarHistorico(idDemanda, idUsuario, "demanda", null, "Criada");
+            await registrarHistorico(idDemanda, idUsuario, "status", null, criado.status ?? "Aberta");
+            const camposIniciais: Array<[string, unknown]> = [["titulo", criado.titulo], ["descricao", criado.descricao], ["tipo", criado.tipo], ["prioridade", criado.prioridade], ["projeto", criado.id_projeto], ["responsavel", criado.id_responsavel], ["prazo", criado.prazo]];
+            for (const [campo, valor] of camposIniciais) await registrarHistorico(idDemanda, idUsuario, campo, null, valor);
+        }
 
         // Monta a resposta no padrao do projeto.
         const objResposta = {
@@ -67,11 +90,22 @@ export default class DemandaControl {
             : null;
         demanda.prazo = request.body.demanda.prazo ?? null;
 
-        // TODO: validar o prazo na API de feriados, registrar as mudancas no historico
-        // e conferir se o perfil do usuario pode editar (depende do login).
+        const consultaAnterior = new Demanda();
+        consultaAnterior.id = demanda.id;
+        const dadosAnteriores = await consultaAnterior.readByID();
         const isUpdated = await demanda.update();
-        // Busca a demanda de novo para devolver os dados atualizados.
         const resultado = isUpdated ? await demanda.readByID() : [];
+        if (isUpdated && dadosAnteriores[0] && resultado[0]) {
+            const antes = dadosAnteriores[0];
+            const depois = resultado[0];
+            const idUsuario = Number(response.locals.usuario.id_usuario);
+            const campos: Array<{ nome: string; coluna: string }> = [{ nome: "titulo", coluna: "titulo" }, { nome: "descricao", coluna: "descricao" }, { nome: "tipo", coluna: "tipo" }, { nome: "prioridade", coluna: "prioridade" }, { nome: "projeto", coluna: "id_projeto" }, { nome: "responsavel", coluna: "id_responsavel" }, { nome: "prazo", coluna: "prazo" }];
+            for (const campo of campos) {
+                const valorAnterior = normalizarHistorico(antes[campo.coluna]);
+                const valorNovo = normalizarHistorico(depois[campo.coluna]);
+                if (valorAnterior !== valorNovo) await registrarHistorico(Number(demanda.id), idUsuario, campo.nome, valorAnterior, valorNovo);
+            }
+        }
 
         const objResposta = {
             cod: 1,
@@ -154,8 +188,13 @@ export default class DemandaControl {
         // Novo status que vem no corpo da requisicao.
         demanda.status = request.body.demanda.status;
 
-        // O model faz o UPDATE no banco.
+        const consultaAnterior = new Demanda();
+        consultaAnterior.id = demanda.id;
+        const dadosAnteriores = await consultaAnterior.readByID();
         const isUpdated = await demanda.updateStatus();
+        if (isUpdated && dadosAnteriores[0]) {
+            await registrarHistorico(Number(demanda.id), Number(response.locals.usuario.id_usuario), "status", dadosAnteriores[0].status, demanda.status);
+        }
 
         const objResposta = {
             cod: 1,

@@ -7,8 +7,10 @@
 import { RowDataPacket } from "mysql2";
 import Banco from "./Banco";
 
+// Busca no banco os dados que a gente precisa pra saber o que cada um pode fazer.
 export default class Acesso {
 
+    // Dado o numero do usuario, descobre o nome e o perfil dele.
     async buscarUsuario(id_usuario: number): Promise<RowDataPacket[]> {
         const conexao = new Banco().getConexao();
         const SQL = "SELECT id_usuario, nome, perfil FROM usuario WHERE id_usuario = ?;";
@@ -16,6 +18,7 @@ export default class Acesso {
         return linhas;
     }
 
+    // Ve na tabela projeto_usuario de quais projetos essa pessoa participa.
     async buscarProjetosDoUsuario(id_usuario: number): Promise<RowDataPacket[]> {
         const conexao = new Banco().getConexao();
         const SQL = "SELECT id_projeto FROM projeto_usuario WHERE id_usuario = ?;";
